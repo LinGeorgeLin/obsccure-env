@@ -32,6 +32,10 @@
     "ai-protection",
     "dotenv"
   ],
-  "author": "MTX_417615, George Lin",
+  "author": "George Lin",
+  "contributors": [
+    {"name": "George Lin"},
+    {"name": "MTX_417615"}
+  ],
   "license": "MIT"
 }
