@@ -1,0 +1,95 @@
+{
+  "name": "obsccure-env-vscode",
+  "displayName": "Obsccure Env Guard",
+  "description": "One-click encrypt and restore .env files to protect secrets from AI agents.",
+  "version": "0.2.2",
+  "publisher": "obsccure-env",
+  "author": "MTX_417615, George Lin",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "scripts": {
+    "stage": "node scripts/stage-core.js",
+    "package": "node ../scripts/sync-version.js && node scripts/stage-core.js && node scripts/build-vsix.js && node scripts/verify-vsix.js",
+    "test": "node ../test/extension-lifecycle.js",
+    "verify": "node scripts/verify-vsix.js"
+  },
+  "activationEvents": [
+    "*"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "Obsccure Env Guard",
+      "properties": {
+        "obsccureEnv.corePath": {
+          "type": "string",
+          "default": "",
+          "description": "obsccure-env 核心資料夾的本機路徑（該資料夾需含 src/crypto.js、src/vault-ops.js 與 src/camouflage/）。一般不需要設定 —— 擴充套件已內建核心。"
+        },
+        "obsccureEnv.camouflageFormat": {
+          "type": "string",
+          "enum": [
+            "png",
+            "log",
+            "bin"
+          ],
+          "default": "png",
+          "description": "偽裝路線使用的外殼格式。關閉 VS Code 前封存、以及「轉換偽裝格式」都以此為準。"
+        },
+        "obsccureEnv.autoDecrypt": {
+          "type": "boolean",
+          "default": false,
+          "description": "開啟專案時若偵測到未解密的偽裝文件，直接解密還原 .env，不再詢問。預設為關閉（每次詢問）。"
+        },
+        "obsccureEnv.autoEncrypt": {
+          "type": "boolean",
+          "default": false,
+          "description": "完全自動模式：視窗離開焦點時不再詢問，直接封存為偽裝格式。"
+        },
+        "obsccureEnv.sealOnClose": {
+          "type": "string",
+          "enum": [
+            "prompt",
+            "always",
+            "never"
+          ],
+          "default": "prompt",
+          "enumDescriptions": [
+            "預設：視窗關閉時若偵測到 .env 就直接封存；但若你在詢問時明確按了「取消」，則保持 .env 原狀。",
+            "視窗關閉時一律封存 .env，即使先前按過「取消」也照封。",
+            "視窗關閉時完全不動 .env —— 只有手動執行「封存」指令才會轉換。"
+          ],
+          "description": "視窗關閉時的封存策略。VS Code 沒有「關窗前」的公開事件，所以詢問會在視窗失去焦點時出現；這個設定決定視窗真正關閉時的處置。"
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "obsccureEnv.encrypt",
+        "title": "Obsccure Env: Encrypt .env (純密文 verify.txt)"
+      },
+      {
+        "command": "obsccureEnv.decrypt",
+        "title": "Obsccure Env: Restore .env (純密文 verify.txt)"
+      },
+      {
+        "command": "obsccureEnv.seal",
+        "title": "Obsccure Env: 封存為偽裝格式 (png / log / bin)"
+      },
+      {
+        "command": "obsccureEnv.restore",
+        "title": "Obsccure Env: 從偽裝保管檔還原 .env (還原後刪除保管檔)"
+      },
+      {
+        "command": "obsccureEnv.convertFormat",
+        "title": "Obsccure Env: 轉換偽裝格式 (換外殼不換金鑰)"
+      },
+      {
+        "command": "obsccureEnv.statusHint",
+        "title": "Obsccure Env: Show Status Hint"
+      }
+    ]
+  }
+}

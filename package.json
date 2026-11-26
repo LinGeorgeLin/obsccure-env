@@ -1,0 +1,37 @@
+{
+  "name": "obscure-env",
+  "version": "1.0.0",
+  "description": "A tool to protect env keys from AI agents by encryption, readable only by local Node.js.",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./register": "./src/register.js",
+    "./src/*": "./src/*"
+  },
+  "files": [
+    "src",
+    "bin",
+    "docs",
+    "README.md"
+  ],
+  "bin": {
+    "obscure-env": "./bin/cli.js"
+  },
+  "scripts": {
+    "test": "node test/integration.js && node test/formats-check.js && node test/extension-lifecycle.js",
+    "test:formats": "node test/formats-check.js",
+    "test:extension": "node test/extension-lifecycle.js",
+    "version:sync": "node scripts/sync-version.js",
+    "version:check": "node scripts/sync-version.js --check",
+    "prepublishOnly": "npm run version:sync && npm test",
+    "demo": "node demo/prepare.js && cd demo && node -r ../src/register.js server.js"
+  },
+  "keywords": [
+    "env",
+    "security",
+    "ai-protection",
+    "dotenv"
+  ],
+  "author": "MTX_417615, George Lin",
+  "license": "MIT"
+}

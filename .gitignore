@@ -1,0 +1,18 @@
+node_modules/
+
+# 加密後的保管檔（內含密文，不應提交版本控制）
+verify.png
+verify.txt
+vault.bin
+.env.vault
+
+# 明文機密
+.env
+.env.*
+!.env.example
+
+# 示範產物
+demo/verify.txt
+
+.DS_Store
+*.log
