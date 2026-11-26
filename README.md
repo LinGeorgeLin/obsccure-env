@@ -1,4 +1,4 @@
-# obscure-env 🛡️
+# Obscure-Env 🛡️
 
 > **防範 AI Agent 與自動化掃描器的環境變數加密與偽裝載入器**
 >
