@@ -3,8 +3,8 @@
   "displayName": "Obsccure Env Guard",
   "description": "One-click encrypt and restore .env files to protect secrets from AI agents.",
   "version": "0.2.2",
-  "publisher": "obsccure-env",
-  "author": "GeorgeLin",
+  "publisher": "GeorgeLin",
+  "author": "George Lin",
   "license": "MIT",
   "engines": {
     "vscode": "^1.85.0"
@@ -96,5 +96,9 @@
   "type": "git",
   "url": "https://github.com/LinGeorgeLin/obsccure-env.git",
   "directory": "vscode-extension"
-}
+},
+  "contributors": [
+    { "name": "George Lin" },
+    { "name": "MTX-417615" }
+]
 }

@@ -33,6 +33,11 @@
     "dotenv"
   ],
   "author": "George Lin",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LinGeorgeLin/obsccure-env.git",
+    "directory": "vscode-extension"
+  },
   "contributors": [
     {"name": "George Lin"},
     {"name": "MTX-417615"}
