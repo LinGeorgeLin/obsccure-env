@@ -91,5 +91,10 @@
         "title": "Obsccure Env: Show Status Hint"
       }
     ]
-  }
+  },
+  "repository": {
+  "type": "git",
+  "url": "https://github.com/LinGeorgeLin/obsccure-env.git",
+  "directory": "vscode-extension"
+}
 }
